@@ -14,7 +14,9 @@
                 Console.WriteLine("Auswahlmenü:");
                 Console.WriteLine("1: Summe der Brüche 1/a bis 1/b");
                 Console.WriteLine("2: Verflixte 4");
-                Console.WriteLine("Palindrom?");
+                Console.WriteLine("3: Palindrom?");
+                Console.WriteLine("4: Arrays");
+                Console.WriteLine("5: Teilbarkeit");
                 Console.Write("Auswahl:");
                 auswahl = Console.ReadLine();
 
@@ -42,8 +44,8 @@
                             ergebnis += 1.0 / i; //ergebnis = ergebnis + 1/i
                         }
 
-                        Console.WriteLine($"Die Summe der Brüche von 1/{a} bis 1/{b} ergibt {Math.Round(ergebnis,4)}.");
-                        
+                        Console.WriteLine($"Die Summe der Brüche von 1/{a} bis 1/{b} ergibt {Math.Round(ergebnis, 4)}.");
+
                         break;
                     case "2":
                         // Aufgabe: Alle ganzen zahlen bis zum Max m sollen aufsteigend
@@ -53,9 +55,9 @@
                         Console.Write("Maximum=");
                         max = Convert.ToInt32(Console.ReadLine());
 
-                        for (int i = 1; i<=max; i++)
+                        for (int i = 1; i <= max; i++)
                         {
-                            if(i % 4 == 0 || i.ToString().Contains('4'))
+                            if (i % 4 == 0 || i.ToString().Contains('4'))
                             {
                                 Console.WriteLine("--4--");
                             }
@@ -69,8 +71,74 @@
                         Console.WriteLine("Palindromprüfung.");
                         Console.Write("Wort eingeben: ");
                         string wort = Console.ReadLine();
+                        string umgekehrtesWort = "";
+
+
+                        for (int i = wort.Length - 1; i >= 0; i--)
+                        {
+                            umgekehrtesWort += wort[i];
+                        }
+                        if (wort.ToLower() == umgekehrtesWort.ToLower())
+                        {
+                            Console.WriteLine($"{wort} ist ein Palindrom.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("{0} ist kein Palindrom.", wort);
+                        }
+                        break;
+                    case "4":
+                        //Array Deklaration:
+                        //Variante 1
+                        string[] studenten = new string[5];
+
+                        studenten[0] = "Jonas";
+                        studenten[1] = "Katherina";
+                        studenten[2] = "Louis";
+                        studenten[3] = "Max";
+                        studenten[4] = "Nia";
+
+                        //Variante 2
+                        string[] Bäume = new string[] { "Ahorn", "Buche", "Birke" };
+
+                        //Variante 3
+                        string[] Tiere = { "Alpaka", "Bär", "Chameleon" };
+
+                        //Variante 4
+                        string[] test = new string[10];
+
+                        //List Deklaration:
+                        //Variante 1
+                        List<string> list = new List<string>();
+
+                        //Variante 2
+                        List<string> s = new List<string>(5);
+
+                        //Variante 3
+                        List<string> TierListe = new List<string> {"Dachs", "Elefant"};
+
+                        //Variante 4*
+                        List<string> Bäume2 = new List<string>(Bäume);
+
+                        Bäume2.Add("Hasel");
+                        
+
 
                         break;
+                    case "5":
+                        Console.WriteLine("Zahl auf Teilbarkeit überprüfen.");
+                        Console.Write("Zahl eingeben:");
+                        int zahl = Convert.ToInt32(Console.ReadLine());
+                        int[] teiler = { 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+                        for (int i = 0; i < teiler.Length; i++)
+                        {
+                            if( zahl % teiler[i] == 0)
+                            {
+                                Console.WriteLine($"{zahl} ist durch {teiler[i]} teilbar.");
+                            }
+                        }
+                        break;
+
                     default:
                         Console.WriteLine("Ungültige Eingabe.");
                         break;
